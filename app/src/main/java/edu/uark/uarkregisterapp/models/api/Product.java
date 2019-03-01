@@ -55,6 +55,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 	@Override
 	public Product loadFromJson(JSONObject rawJsonObject) {
 		String value = rawJsonObject.optString(ProductFieldName.ID.getFieldName());
+		//Possibly checks for existing products?
 		if (!StringUtils.isBlank(value)) {
 			this.id = UUID.fromString(value);
 		}
