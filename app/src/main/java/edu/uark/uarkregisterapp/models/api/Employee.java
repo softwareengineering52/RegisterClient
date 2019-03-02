@@ -63,7 +63,7 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
     }
 
     private boolean activeStatus;
-    public boolean activeStatus() {
+    public boolean getActiveStatus() {
         return this.activeStatus;
     }
     public Employee setActiveStatus(boolean activeStatus) {
@@ -116,7 +116,12 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
 
         this.lookupCode = rawJsonObject.optString(EmployeeFieldName.LOOKUP_CODE.getFieldName());
         this.count = rawJsonObject.optInt(EmployeeFieldName.COUNT.getFieldName());
-
+        this.firstName = rawJsonObject.optString(EmployeeFieldName.FIRSTNAME.getFieldName());
+        this.lastName = rawJsonObject.optString(EmployeeFieldName.LASTNAME.getFieldName());
+        this.activeStatus = rawJsonObject.optBoolean(EmployeeFieldName.ACTIVESTATUS.getFieldName());
+        this.rank = rawJsonObject.optString(EmployeeFieldName.RANK.getFieldName());
+        this.managerID = rawJsonObject.optInt(EmployeeFieldName.MANAGERID.getFieldName());
+        this.password = rawJsonObject.optString(EmployeeFieldName.PASSWORD.getFieldName());
         value = rawJsonObject.optString(EmployeeFieldName.CREATED_ON.getFieldName());
         if (!StringUtils.isBlank(value)) {
             try {
@@ -137,6 +142,12 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
             jsonObject.put(EmployeeFieldName.ID.getFieldName(), this.id.toString());
             jsonObject.put(EmployeeFieldName.LOOKUP_CODE.getFieldName(), this.lookupCode);
             jsonObject.put(EmployeeFieldName.COUNT.getFieldName(), this.count);
+            jsonObject.put(EmployeeFieldName.FIRSTNAME.getFieldName(), this.firstName);
+            jsonObject.put(EmployeeFieldName.LASTNAME.getFieldName(), this.lastName);
+            jsonObject.put(EmployeeFieldName.ACTIVESTATUS.getFieldName(), this.activeStatus);
+            jsonObject.put(EmployeeFieldName.RANK.getFieldName(), this.rank);
+            jsonObject.put(EmployeeFieldName.MANAGERID.getFieldName(), this.managerID);
+            jsonObject.put(EmployeeFieldName.PASSWORD.getFieldName(), this.password);
             jsonObject.put(EmployeeFieldName.CREATED_ON.getFieldName(), (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US)).format(this.createdOn));
         } catch (JSONException e) {
             e.printStackTrace();

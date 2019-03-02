@@ -96,6 +96,12 @@ public class EmployeeTransition implements Parcelable {
         destination.writeByteArray((new UUIDToByteConverterCommand()).setValueToConvert(this.id).execute());
         destination.writeString(this.lookupCode);
         destination.writeInt(this.count);
+        destination.writeString(this.firstName);
+        destination.writeString(this.lastName);
+        destination.writeValue(this.activeStatus);
+        destination.writeString(this.rank);
+        destination.writeInt(this.managerID);
+        destination.writeString(this.password);
         destination.writeLong(this.createdOn.getTime());
     }
 
@@ -119,6 +125,12 @@ public class EmployeeTransition implements Parcelable {
         this.id = new UUID(0, 0);
         this.createdOn = new Date();
         this.lookupCode = StringUtils.EMPTY;
+        this.firstName = "";
+        this.lastName = "";
+        this.activeStatus = false;
+        this.rank = "cashier";
+        this.managerID = -1;
+        this.password = "";
     }
 
     public EmployeeTransition(Employee employee) {
@@ -126,13 +138,24 @@ public class EmployeeTransition implements Parcelable {
         this.count = employee.getCount();
         this.createdOn = employee.getCreatedOn();
         this.lookupCode = employee.getLookupCode();
+        this.firstName = employee.getFirstName();
+        this.lastName = employee.getLatName();
+        this.activeStatus = employee.getActiveStatus();
+        this.rank = employee.getRank();
+        this.managerID = employee.getManagerID();
+        this.password = employee.getPassword();
     }
 
     private EmployeeTransition(Parcel employeeTransitionParcel) {
         this.id = (new ByteToUUIDConverterCommand()).setValueToConvert(employeeTransitionParcel.createByteArray()).execute();
         this.lookupCode = employeeTransitionParcel.readString();
         this.count = employeeTransitionParcel.readInt();
-
+        this.firstName = employeeTransitionParcel.readString();
+        this.lastName = employeeTransitionParcel.readString();
+        this.activeStatus = (Boolean) employeeTransitionParcel.readValue(Boolean.class.getClassLoader());
+        this.rank = employeeTransitionParcel.readString();
+        this.managerID = employeeTransitionParcel.readInt();
+        this.password = employeeTransitionParcel.readString();
         this.createdOn = new Date();
         this.createdOn.setTime(employeeTransitionParcel.readLong());
     }
