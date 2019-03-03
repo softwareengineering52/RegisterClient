@@ -9,7 +9,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welome! Please log in."
+        android:text="Please create your First User"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="24sp"
@@ -26,8 +26,22 @@
         android:baselineAligned="false"
         android:ems="10"
         android:fontFamily="sans-serif"
-        android:hint="Employee ID"
-        android:inputType="number" />
+        android:hint="First Name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="192dp"
+        android:baselineAligned="false"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Last Name"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/editText2"
@@ -35,7 +49,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="124dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="313dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
@@ -46,8 +61,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="139dp"
-        android:layout_marginTop="207dp"
-        android:text="Log In"
-        android:onClick="loginButtonOnClick"/>
+        android:layout_marginStart="306dp"
+        android:layout_marginTop="623dp"
+        android:onClick="Save"
+        android:text="Save" />
 </RelativeLayout>

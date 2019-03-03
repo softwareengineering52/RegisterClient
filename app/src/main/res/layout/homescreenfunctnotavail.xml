@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_landing"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.uark.uarkregisterapp.LandingActivity">
+
+    <TextView
+        android:id="@+id/text_view_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:text="Welcome! What would you like to do Next?"/>
+
+    <Button
+        android:id="@+id/Start_Transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Start Transaction"
+        android:onClick="displayAllProductsButtonOnClick"/>
+    <Button
+        android:id="@+id/Create_Employee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:text="Create Employee"
+        android:onClick="displayAllProductsButtonOnClick"/>
+    <Button
+        android:id="@+id/Sales_Report_Product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:text="Sales Report: Product"
+        android:onClick="displayAllProductsButtonOnClick"/>
+    <Button
+        android:id="@+id/Sales_Report_Cashier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="210dp"
+        android:text="Sales Report Cashier"
+        android:onClick="displayAllProductsButtonOnClick"/>
+
+    <Button
+        android:id="@+id/Logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_welcome"
+        android:layout_marginTop="450dp"
+        android:onClick="displayAllProductsButtonOnClick"
+        android:text="Log Out" />
+
+
+</RelativeLayout>
