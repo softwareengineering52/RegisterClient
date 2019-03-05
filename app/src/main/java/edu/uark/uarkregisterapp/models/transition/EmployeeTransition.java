@@ -13,12 +13,12 @@ import edu.uark.uarkregisterapp.commands.converters.UUIDToByteConverterCommand;
 import edu.uark.uarkregisterapp.models.api.Employee;
 
 public class EmployeeTransition implements Parcelable {
-    private UUID id;
-    public UUID getId() {
-        return this.id;
+    private UUID recordID;
+    public UUID getRecordID() {
+        return this.recordID;
     }
-    public EmployeeTransition setId(UUID id) {
-        this.id = id;
+    public EmployeeTransition setRecordID(UUID id) {
+        this.recordID = id;
         return this;
     }
 
@@ -31,12 +31,12 @@ public class EmployeeTransition implements Parcelable {
         return this;
     }
 
-    private int count;
-    public int getCount() {
-        return this.count;
+    private int employeeID;
+    public int getEmployeeID() {
+        return this.employeeID;
     }
-    public EmployeeTransition setCount(int count) {
-        this.count = count;
+    public EmployeeTransition setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
         return this;
     }
 
@@ -93,9 +93,9 @@ public class EmployeeTransition implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel destination, int flags) {
-        destination.writeByteArray((new UUIDToByteConverterCommand()).setValueToConvert(this.id).execute());
+        destination.writeByteArray((new UUIDToByteConverterCommand()).setValueToConvert(this.recordID).execute());
         destination.writeString(this.lookupCode);
-        destination.writeInt(this.count);
+        destination.writeInt(this.employeeID);
         destination.writeString(this.firstName);
         destination.writeString(this.lastName);
         destination.writeValue(this.activeStatus);
@@ -121,8 +121,8 @@ public class EmployeeTransition implements Parcelable {
     };
 
     public EmployeeTransition() {
-        this.count = -1;
-        this.id = new UUID(0, 0);
+        this.employeeID = -1;
+        this.recordID = new UUID(0, 0);
         this.createdOn = new Date();
         this.lookupCode = StringUtils.EMPTY;
         this.firstName = "";
@@ -134,8 +134,8 @@ public class EmployeeTransition implements Parcelable {
     }
 
     public EmployeeTransition(Employee employee) {
-        this.id = employee.getId();
-        this.count = employee.getCount();
+        this.recordID = employee.getRecordID();
+        this.employeeID = employee.getEmployeeID();
         this.createdOn = employee.getCreatedOn();
         this.lookupCode = employee.getLookupCode();
         this.firstName = employee.getFirstName();
@@ -147,9 +147,9 @@ public class EmployeeTransition implements Parcelable {
     }
 
     private EmployeeTransition(Parcel employeeTransitionParcel) {
-        this.id = (new ByteToUUIDConverterCommand()).setValueToConvert(employeeTransitionParcel.createByteArray()).execute();
+        this.recordID = (new ByteToUUIDConverterCommand()).setValueToConvert(employeeTransitionParcel.createByteArray()).execute();
         this.lookupCode = employeeTransitionParcel.readString();
-        this.count = employeeTransitionParcel.readInt();
+        this.employeeID = employeeTransitionParcel.readInt();
         this.firstName = employeeTransitionParcel.readString();
         this.lastName = employeeTransitionParcel.readString();
         this.activeStatus = (Boolean) employeeTransitionParcel.readValue(Boolean.class.getClassLoader());

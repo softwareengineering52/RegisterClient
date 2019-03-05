@@ -17,15 +17,15 @@ import edu.uark.uarkregisterapp.models.api.enums.EmployeeApiMethod;
 import edu.uark.uarkregisterapp.models.api.interfaces.PathElementInterface;
 
 public class EmployeeService extends BaseRemoteService {
-    public ApiResponse<Employee> getEmployee(UUID employeeId) {
+    public ApiResponse<Employee> getEmployee(UUID recordId) {
         return this.readEmployeeDetailsFromResponse(
                 this.<Employee>performGetRequest(
-                        this.buildPath(employeeId)
+                        this.buildPath(recordId)
                 )
         );
     }
 
-    public ApiResponse<Employee> getPEmployeeByLookupCode(String employeeLookupCode) {
+    public ApiResponse<Employee> getEmployeeByLookupCode(String employeeLookupCode) {
         return this.readEmployeeDetailsFromResponse(
                 this.<Employee>performGetRequest(
                         this.buildPath(
@@ -63,7 +63,7 @@ public class EmployeeService extends BaseRemoteService {
     public ApiResponse<Employee> updateEmployee(Employee employee) {
         return this.readEmployeeDetailsFromResponse(
                 this.<Employee>performPutRequest(
-                        this.buildPath(employee.getId())
+                        this.buildPath(employee.getRecordID())
                         , employee.convertToJson()
                 )
         );
@@ -78,9 +78,9 @@ public class EmployeeService extends BaseRemoteService {
         );
     }
 
-    public ApiResponse<String> deleteEmployee(UUID employeeId) {
+    public ApiResponse<String> deleteEmployee(UUID recordID) {
         return this.<String>performDeleteRequest(
-                this.buildPath(employeeId)
+                this.buildPath(recordID)
         );
     }
 

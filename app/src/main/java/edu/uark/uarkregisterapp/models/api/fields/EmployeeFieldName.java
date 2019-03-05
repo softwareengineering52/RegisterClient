@@ -3,9 +3,9 @@ package edu.uark.uarkregisterapp.models.api.fields;
 import edu.uark.uarkregisterapp.models.api.interfaces.FieldNameInterface;
 
 public enum EmployeeFieldName implements FieldNameInterface {
-    ID("id"),
+    RECORDID("recordID"),
     LOOKUP_CODE("lookupCode"),
-    COUNT("count"),
+    EMPLOYEEID("employeeID"),
     FIRSTNAME("firstName"),
     LASTNAME("lastName"),
     ACTIVESTATUS("activeStatus"),

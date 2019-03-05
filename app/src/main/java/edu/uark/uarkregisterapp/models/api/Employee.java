@@ -17,12 +17,10 @@ import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
 
 public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<Employee> {
 
-    private UUID id;
-    public UUID getId() {
-        return this.id;
-    }
-    public Employee setId(UUID id) {
-        this.id = id;
+    private UUID recordID;
+    public UUID getRecordID() { return this.recordID; }
+    public Employee setRecordID(UUID recordID) {
+        this.recordID = recordID;
         return this;
     }
 
@@ -35,12 +33,12 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
         return this;
     }
 
-    private int count;
-    public int getCount() {
-        return this.count;
+    private int employeeID;
+    public int getEmployeeID() {
+        return this.employeeID;
     }
-    public Employee setCount(int count) {
-        this.count = count;
+    public Employee setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
         return this;
     }
 
@@ -109,13 +107,13 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
 
     @Override
     public Employee loadFromJson(JSONObject rawJsonObject) {
-        String value = rawJsonObject.optString(EmployeeFieldName.ID.getFieldName());
+        String value = rawJsonObject.optString(EmployeeFieldName.RECORDID.getFieldName());
         if (!StringUtils.isBlank(value)) {
-            this.id = UUID.fromString(value);
+            this.recordID = UUID.fromString(value);
         }
 
         this.lookupCode = rawJsonObject.optString(EmployeeFieldName.LOOKUP_CODE.getFieldName());
-        this.count = rawJsonObject.optInt(EmployeeFieldName.COUNT.getFieldName());
+        this.employeeID = rawJsonObject.optInt(EmployeeFieldName.EMPLOYEEID.getFieldName());
         this.firstName = rawJsonObject.optString(EmployeeFieldName.FIRSTNAME.getFieldName());
         this.lastName = rawJsonObject.optString(EmployeeFieldName.LASTNAME.getFieldName());
         this.activeStatus = rawJsonObject.optBoolean(EmployeeFieldName.ACTIVESTATUS.getFieldName());
@@ -139,9 +137,9 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
         JSONObject jsonObject = new JSONObject();
 
         try {
-            jsonObject.put(EmployeeFieldName.ID.getFieldName(), this.id.toString());
+            jsonObject.put(EmployeeFieldName.RECORDID.getFieldName(), this.recordID.toString());
             jsonObject.put(EmployeeFieldName.LOOKUP_CODE.getFieldName(), this.lookupCode);
-            jsonObject.put(EmployeeFieldName.COUNT.getFieldName(), this.count);
+            jsonObject.put(EmployeeFieldName.EMPLOYEEID.getFieldName(), this.employeeID);
             jsonObject.put(EmployeeFieldName.FIRSTNAME.getFieldName(), this.firstName);
             jsonObject.put(EmployeeFieldName.LASTNAME.getFieldName(), this.lastName);
             jsonObject.put(EmployeeFieldName.ACTIVESTATUS.getFieldName(), this.activeStatus);
@@ -157,7 +155,7 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
     }
 
     public Employee() {
-        this.count = -1;
+        this.employeeID = -1;
         this.lookupCode = "";
         this.firstName = "";
         this.lastName = "";
@@ -165,13 +163,12 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
         this.rank = "cashier";
         this.managerID = -1;
         this.password = "";
-        this.id = new UUID(0, 0);
-        this.createdOn = new Date();
+        this.recordID = new UUID(0, 0);
     }
 
     public Employee(EmployeeTransition employeeTransition) {
-        this.id = employeeTransition.getId();
-        this.count = employeeTransition.getCount();
+        this.recordID = employeeTransition.getRecordID();
+        this.employeeID = employeeTransition.getEmployeeID();
         this.firstName = employeeTransition.getFirstName();
         this.lastName = employeeTransition.getLastName();
         this.activeStatus = employeeTransition.getActiveStatus();
